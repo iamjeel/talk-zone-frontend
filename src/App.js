@@ -1,77 +1,82 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import io from 'socket.io-client';
 import './App.css';
 
-// Connect to the backend server
-const socket = io.connect('http://localhost:3001');
-
-function App() {
+const App = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const [image, setImage] = useState(null);
-  const [imagePreview, setImagePreview] = useState(null);
+  const [coordinates, setCoordinates] = useState(null);
+  const [room, setRoom] = useState(''); // Room state to display the room name
+  const socketRef = useRef(null);
 
+  // Get user location on component mount
   useEffect(() => {
-    // Receive messages from the server
-    socket.on('receive_message', (data) => {
-      setMessages((prevMessages) => [...prevMessages, data]);
-    });
-
-    return () => socket.off('receive_message'); // Clean up on unmount
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        setCoordinates({
+          latitude: position.coords.latitude,
+          longitude: position.coords.longitude,
+        });
+      },
+      (error) => {
+        console.error('Error getting location', error);
+      }
+    );
   }, []);
 
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-    if (file && file.size <= 2 * 1024 * 1024) { // Limit image size to 2MB
-      setImage(file);
-      setImagePreview(URL.createObjectURL(file));
-    } else {
-      alert("File too large! Please select an image smaller than 2MB.");
-    }
-  };
-
-  const sendMessage = async () => {
-    if (message.trim() || image) {
-      const formData = new FormData();
-      if (image) formData.append('image', image);
-      formData.append('message', message);
-
-      await fetch('http://localhost:3001/upload', {
-        method: 'POST',
-        body: formData,
+  // Establish socket connection once coordinates are available
+  useEffect(() => {
+    if (coordinates) {
+      socketRef.current = io.connect('http://localhost:3001', {
+        query: {
+          latitude: coordinates.latitude,
+          longitude: coordinates.longitude,
+        },
       });
 
-      setMessage(''); // Clear message input
-      setImage(null); // Clear image input
-      setImagePreview(null);
+      // Listen for incoming messages
+      socketRef.current.on('receive_message', (data) => {
+        setMessages((prevMessages) => [...prevMessages, data]);
+      });
+
+      // Listen for the room name after joining
+      socketRef.current.on('joined_room', (roomName) => {
+        console.log("roomname", roomName)
+
+        setRoom(roomName); // Set the room name in the state
+      });
+      return () => socketRef.current.disconnect();
+    }
+  }, [coordinates]);
+
+  // Send message to the backend
+  const sendMessage = () => {
+    if (message.trim()) {
+      socketRef.current.emit('send_message', message);
+      setMessage(''); // Clear input field
     }
   };
 
   return (
     <div className="App">
-      <h1>Anonymous Chat</h1>
-
+      <h1>Anonymous Chat - Location Based</h1>
+      <p>Room: {room}</p> {/* Display room name */}
       <div className="chat-box">
         {messages.map((msg, index) => (
           <div key={index} className="message">
-            <p>{msg.message}</p>
-            {msg.image && <img src={msg.image} alt="uploaded" style={{ maxWidth: '150px' }} />}
+            {msg}
           </div>
         ))}
       </div>
-
       <input
         type="text"
-        placeholder="Type your message (max 200 characters)"
-        maxLength="200"
+        placeholder="Type your message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-      <input type="file" onChange={handleImageChange} accept="image/*" />
-      {imagePreview && <img src={imagePreview} alt="Image preview" style={{ maxWidth: '150px' }} />}
       <button onClick={sendMessage}>Send</button>
     </div>
   );
-}
+};
 
 export default App;
