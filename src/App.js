@@ -41,7 +41,6 @@ const App = () => {
 
       // Listen for the room name after joining
       socketRef.current.on('joined_room', (roomName) => {
-        console.log("roomname", roomName)
 
         setRoom(roomName); // Set the room name in the state
       });
