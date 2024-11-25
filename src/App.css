@@ -7,8 +7,8 @@
 
 body {
   font-family: 'Roboto', sans-serif;
-  background: #2c3e50; /* Dark background for the body */
-  color: #ecf0f1; /* Light text color for contrast */
+  background: #fff;
+  color: #000;
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -19,10 +19,10 @@ body {
 /* Chat Container */
 .chat-container {
   width: 100%;
-  height: 100vh; /* Full height of the viewport */
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  background: #34495e; /* Dark gray background for the chat container */
+  background: #fff;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   overflow: hidden;
@@ -30,16 +30,22 @@ body {
 
 /* Header Section */
 .header {
-  background: #8e44ad; /* Purple background for the header */
-  color: #fff;
+  background: #fff;
+  color: #000;
   padding: 20px;
   text-align: center;
-  flex-shrink: 0; /* Prevent the header from shrinking */
+  flex-shrink: 0;
+  border-bottom: 1px solid #000;
 }
 
 .header h1 {
   font-size: 24px;
   margin-bottom: 10px;
+  transition: transform 0.3s ease;
+}
+
+.header h1:hover {
+  transform: scale(1.05);
 }
 
 .room-info {
@@ -49,65 +55,96 @@ body {
 
 /* Chat Box */
 .chat-box {
-  flex-grow: 1; /* Takes up the remaining space */
+  flex-grow: 1;
   padding: 20px;
-  background: #2c3e50; /* Dark gray background for chat box */
-  overflow-y: scroll; /* Enable scrolling */
-  border-top: 1px solid #7f8c8d; /* Light border on top */
+  background: #fff;
+  overflow-y: scroll;
+  border-top: 1px solid #000;
   display: flex;
-  flex-direction: column-reverse; /* New messages appear at the bottom */
-  max-height: calc(100vh - 120px); /* Adjust height to fit the remaining space */
+  flex-direction: column-reverse;
+  max-height: calc(100vh - 120px);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .message {
   padding: 12px;
-  background: #5f27cd; /* Purple background for messages */
+  background: #f1f1f1;
   margin-bottom: 10px;
   border-radius: 8px;
-  color: #fff;
+  color: #000;
   font-size: 14px;
   word-wrap: break-word;
   max-width: 80%;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  animation: messageFadeIn 0.3s ease-in-out;
+}
+
+/* Fade-in Animation for Messages */
+@keyframes messageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Input and Send Button */
 .message-input-container {
   display: flex;
   padding: 10px;
-  background: #34495e; /* Same background as the container */
-  border-top: 1px solid #7f8c8d; /* Light border on top */
-  flex-shrink: 0; /* Prevent the input section from shrinking */
+  background: #fff;
+  border-top: 1px solid #000;
+  flex-shrink: 0;
 }
 
 .message-input {
   flex-grow: 1;
   padding: 12px;
   border-radius: 8px;
-  border: 1px solid #7f8c8d; /* Light border for input */
+  border: 1px solid #ddd;
   font-size: 14px;
   margin-right: 10px;
   outline: none;
-  background: #1e2a35; /* Darker background for the input field */
-  color: #ecf0f1; /* Light text color for input */
+  background: #fff;
+  color: #000;
+  transition: box-shadow 0.3s ease;
 }
 
 .message-input:focus {
-  border-color: #8e44ad; /* Purple border on focus */
+  border-color: #4c9dff;
+  box-shadow: 0 0 5px rgba(76, 157, 255, 0.5);
 }
 
 .send-button {
-  background: #8e44ad; /* Purple background for send button */
-  color: white;
-  border: none;
+  background: #4c9dff;
+  color: #fff;
+  border: 1px solid #4c9dff;
   padding: 12px 18px;
   border-radius: 8px;
   font-size: 16px;
   cursor: pointer;
   transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .send-button:hover {
-  background: #9b59b6; /* Lighter purple on hover */
+  background: #006eff;
 }
 
 .send-button:active {
@@ -115,7 +152,7 @@ body {
 }
 
 .send-button:disabled {
-  background: #7f8c8d; /* Disabled button color */
+  background: #e0e0e0;
   cursor: not-allowed;
 }
 

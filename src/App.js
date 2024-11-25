@@ -98,7 +98,7 @@ const App = () => {
             onKeyDown={handleKeyDown} // Handle Enter key press
           />
           <button className="send-button" onClick={sendMessage} disabled={!message.trim()}>
-            Send
+            <span className="send-button-text">Send</span>
           </button>
         </div>
       </div>
