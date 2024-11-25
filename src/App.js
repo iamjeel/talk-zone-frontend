@@ -6,11 +6,15 @@ const App = () => {
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
   const [coordinates, setCoordinates] = useState(null);
-  const [room, setRoom] = useState(''); // Room state to display the room name
+  const [room, setRoom] = useState('');
   const socketRef = useRef(null);
 
-  // Get user location on component mount
-  useEffect(() => {
+  // Helper function for handling geolocation
+  const getUserLocation = () => {
+    if (!navigator.geolocation) {
+      console.error('Geolocation not supported by this browser.');
+      return;
+    }
     navigator.geolocation.getCurrentPosition(
       (position) => {
         setCoordinates({
@@ -22,29 +26,36 @@ const App = () => {
         console.error('Error getting location', error);
       }
     );
+  };
+
+  // Get user location on component mount
+  useEffect(() => {
+    getUserLocation();
   }, []);
 
   // Establish socket connection once coordinates are available
   useEffect(() => {
     if (coordinates) {
-      socketRef.current = io.connect('http://localhost:3001', {
+      const socket = io.connect(process.env.REACT_APP_SOCKET_SERVER_URL || 'http://localhost:3001', {
         query: {
           latitude: coordinates.latitude,
           longitude: coordinates.longitude,
         },
       });
 
+      socketRef.current = socket;
+
       // Listen for incoming messages
-      socketRef.current.on('receive_message', (data) => {
+      socket.on('receive_message', (data) => {
         setMessages((prevMessages) => [...prevMessages, data]);
       });
 
       // Listen for the room name after joining
-      socketRef.current.on('joined_room', (roomName) => {
-
-        setRoom(roomName); // Set the room name in the state
+      socket.on('joined_room', (roomName) => {
+        setRoom(roomName);
       });
-      return () => socketRef.current.disconnect();
+
+      return () => socket.disconnect();
     }
   }, [coordinates]);
 
@@ -52,14 +63,14 @@ const App = () => {
   const sendMessage = () => {
     if (message.trim()) {
       socketRef.current.emit('send_message', message);
-      setMessage(''); // Clear input field
+      setMessage('');
     }
   };
 
   return (
     <div className="App">
       <h1>Anonymous Chat - Location Based</h1>
-      <p>Room: {room}</p> {/* Display room name */}
+      <p>Room: {room}</p>
       <div className="chat-box">
         {messages.map((msg, index) => (
           <div key={index} className="message">
