@@ -67,24 +67,41 @@ const App = () => {
     }
   };
 
+  // Handle Enter key press to send message
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault(); // Prevent newline from being inserted
+      sendMessage();
+    }
+  };
+
   return (
     <div className="App">
-      <h1>Anonymous Chat - Location Based</h1>
-      <p>Room: {room}</p>
-      <div className="chat-box">
-        {messages.map((msg, index) => (
-          <div key={index} className="message">
-            {msg}
-          </div>
-        ))}
+      <div className="chat-container">
+        <div className="header">
+          <h1>Anonymous Chat - Location Based</h1>
+          <p className="room-info">Room: {room}</p>
+        </div>
+        <div className="chat-box">
+          {messages.map((msg, index) => (
+            <div key={index} className="message">
+              {msg}
+            </div>
+          ))}
+        </div>
+        <div className="message-input-container">
+          <textarea
+            className="message-input"
+            placeholder="Type your message"
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={handleKeyDown} // Handle Enter key press
+          />
+          <button className="send-button" onClick={sendMessage} disabled={!message.trim()}>
+            Send
+          </button>
+        </div>
       </div>
-      <input
-        type="text"
-        placeholder="Type your message"
-        value={message}
-        onChange={(e) => setMessage(e.target.value)}
-      />
-      <button onClick={sendMessage}>Send</button>
     </div>
   );
 };
