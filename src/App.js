@@ -37,7 +37,7 @@ const App = () => {
   // Establish socket connection once coordinates are available
   useEffect(() => {
     if (coordinates) {
-      const socket = io.connect(process.env.REACT_APP_SOCKET_SERVER_URL || 'http://localhost:3001', {
+      const socket = io.connect('https://talk-zone-backend.onrender.com', {
         query: {
           latitude: coordinates.latitude,
           longitude: coordinates.longitude,
