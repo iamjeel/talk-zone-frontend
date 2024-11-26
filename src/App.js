@@ -8,6 +8,7 @@ const App = () => {
   const [coordinates, setCoordinates] = useState(null);
   const [room, setRoom] = useState('');
   const socketRef = useRef(null);
+  const messagesEndRef = useRef(null); // Reference to scroll to the bottom of the chat
 
   // Helper function for handling geolocation
   const getUserLocation = () => {
@@ -75,11 +76,17 @@ const App = () => {
     }
   };
 
+  // Scroll to the bottom of the chat box whenever a new message is added
+  useEffect(() => {
+    // Scroll to the bottom smoothly whenever messages are updated
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]); // This will trigger every time the messages array is updated
+
   return (
     <div className="App">
       <div className="chat-container">
         <div className="header">
-          <h1>Anonymous Chat - Location Based</h1>
+          <h1>Talk Zone</h1>
           <p className="room-info">Room: {room}</p>
         </div>
         <div className="chat-box">
@@ -88,6 +95,8 @@ const App = () => {
               {msg}
             </div>
           ))}
+          {/* This div ensures the page scrolls to the bottom */}
+          <div ref={messagesEndRef} />
         </div>
         <div className="message-input-container">
           <textarea
