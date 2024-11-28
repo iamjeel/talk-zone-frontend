@@ -1,5 +1,4 @@
 import React from 'react';
-import './ChatBox.css'
 
 const ChatBox = ({ messages, messagesEndRef }) => (
   <div className="chat-box">

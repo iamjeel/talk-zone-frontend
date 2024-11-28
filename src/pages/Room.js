@@ -3,6 +3,7 @@ import { connectSocket, getSocket } from '../services/socketService';
 import Header from '../components/Header';
 import ChatBox from '../components/ChatBox';
 import MessageInput from '../components/MessageInput';
+import './Room.css';
 
 
 const Room = () => {

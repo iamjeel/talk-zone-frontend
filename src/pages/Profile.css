@@ -1,0 +1,153 @@
+/* Root Variables for Reusability */
+:root {
+    --primary-color: #4facfe;
+    --secondary-color: #00f2fe;
+    --button-hover-color: #00f2fe;
+    --button-active-color: #b2ebf2;
+    --font-primary: 'Arial', sans-serif;
+    --font-size-h1: 2.5rem;
+    --font-size-p: 1.2rem;
+    --font-size-button: 1rem;
+    --font-size-mobile-h1: 2rem;
+    --font-size-mobile-p: 1rem;
+    --font-size-tablet-h1: 2.2rem;
+    --font-size-tablet-p: 1.1rem;
+    --font-size-desktop-h1: 3rem;
+    --font-size-desktop-p: 1.3rem;
+    --button-padding: 10px 20px;
+    --button-mobile-padding: 12px 0;
+    --button-desktop-padding: 15px 30px;
+    --line-height: 1.6;
+    --max-width: 1200px;
+    --max-paragraph-width: 800px;
+  }
+  
+  /* Profile and Room History Page Styling */
+  .Profile, .RoomHistory {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: #f4f4f4;
+    color: #333;
+    padding: 20px;
+    font-family: var(--font-primary);
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+  
+  .Profile h1, .RoomHistory h1 {
+    font-size: var(--font-size-h1);
+    margin-bottom: 1rem;
+  }
+  
+  .Profile p, .RoomHistory p {
+    font-size: var(--font-size-p);
+    margin-bottom: 1rem;
+    line-height: var(--line-height);
+    max-width: var(--max-paragraph-width);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .Profile ul, .RoomHistory ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .Profile li, .RoomHistory li {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+  }
+  
+  .Profile button, .RoomHistory button {
+    padding: var(--button-padding);
+    font-size: var(--font-size-button);
+    color: #fff;
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .Profile button:hover, .RoomHistory button:hover {
+    background-color: var(--button-hover-color);
+    transform: scale(1.05);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .Profile button:active, .RoomHistory button:active {
+    background-color: var(--button-active-color);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Mobile View (max-width 600px) */
+  @media (max-width: 600px) {
+    .Profile, .RoomHistory {
+      height: auto;
+      padding: 30px 15px;
+    }
+  
+    .Profile h1, .RoomHistory h1 {
+      font-size: var(--font-size-mobile-h1);
+    }
+  
+    .Profile p, .RoomHistory p {
+      font-size: var(--font-size-mobile-p);
+    }
+  
+    .Profile button, .RoomHistory button {
+      width: 100%;
+      padding: var(--button-mobile-padding);
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Tablet View (max-width 900px) */
+  @media (max-width: 900px) {
+    .Profile, .RoomHistory {
+      height: auto;
+      padding: 30px 20px;
+    }
+  
+    .Profile h1, .RoomHistory h1 {
+      font-size: var(--font-size-tablet-h1);
+    }
+  
+    .Profile p, .RoomHistory p {
+      font-size: var(--font-size-tablet-p);
+    }
+  
+    .Profile button, .RoomHistory button {
+      width: 100%;
+      font-size: 1.1rem;
+    }
+  }
+  
+  /* Desktop View (min-width 1200px) */
+  @media (min-width: 1200px) {
+    .Profile, .RoomHistory {
+      padding: 40px 30px;
+    }
+  
+    .Profile h1, .RoomHistory h1 {
+      font-size: var(--font-size-desktop-h1);
+    }
+  
+    .Profile p, .RoomHistory p {
+      font-size: var(--font-size-desktop-p);
+    }
+  
+    .Profile button, .RoomHistory button {
+      width: auto;
+      font-size: 1.2rem;
+      padding: var(--button-desktop-padding);
+    }
+  }
+  
