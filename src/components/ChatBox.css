@@ -1,0 +1,82 @@
+/* Chat Container */
+.chat-container {
+    width: 100vw; /* Full width of the viewport */
+    height: calc(100vh - 60px); /* Full height minus the ad */
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    overflow: hidden; /* Prevent outer scrolling */
+}
+
+/* Chat Box */
+.chat-box {
+    flex-grow: 1; /* Allow the chat-box to expand to fill the remaining space */
+    padding: 10px; /* Add padding for message spacing */
+    background: #fff;
+    overflow-y: auto; /* Enable scrolling for overflowing messages */
+    border-top: 1px solid #000;
+    display: flex;
+    flex-direction: column;
+    width: 100%; /* Ensure the chat-box spans the full width */
+    height: calc(85vh - 60px - 50px); /* Adjust height dynamically (header and footer space) */
+    box-sizing: border-box; /* Include padding and borders in the height/width calculation */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+/* Ensure Messages Don't Overflow */
+.message {
+    padding: 12px;
+    background: #f1f1f1;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    color: #000;
+    font-size: 14px;
+    max-width: 80%; /* Message takes at most 80% of the chatbox width */
+    width: fit-content; /* Adjusts to content size */
+    word-wrap: break-word; /* Breaks long words to avoid overflow */
+    border: 1px solid #ddd;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    animation: messageFadeIn 0.3s ease-in-out;
+}
+
+/* Scrollbar Styling */
+.chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background-color: #4c9dff;
+    border-radius: 10px;
+}
+
+.chat-box::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 600px) {
+    .message {
+        font-size: 13px;
+        max-width: 85%;
+    }
+}
+
+@media (max-width: 900px) {
+    .message {
+        font-size: 14px;
+        max-width: 80%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .chat-container {
+        width: 100vw;
+        height: 100vh;
+    }
+
+    .message {
+        font-size: 15px;
+        max-width: 100%;
+    }
+}

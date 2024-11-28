@@ -1,0 +1,75 @@
+/* Header Section */
+.header {
+    background: #fff;
+    color: #000;
+    padding: 20px;
+    text-align: center;
+    flex-shrink: 0;
+    border-bottom: 1px solid #000;
+    width: 100%;
+  }
+  
+  .header h1 {
+    font-size: 28px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: #4c9dff;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, color 0.3s ease;
+  }
+  
+  .header h1:hover {
+    transform: scale(1.1);
+    color: #006eff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .room-info {
+    font-size: 14px;
+    font-weight: 300;
+    color: #777;
+    font-style: italic;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+  }
+  
+  .room-info:hover {
+    color: #4c9dff;
+  }
+
+
+  /* Media Queries for Responsiveness */
+
+/* Mobile View */
+@media (max-width: 600px) {
+    .header h1 {
+      font-size: 20px;
+    }
+  
+    .message-input {
+      padding: 10px;
+      font-size: 12px;
+    }
+  }
+
+  /* Tablet View */
+@media (max-width: 900px) {
+    .header h1 {
+      font-size: 22px;
+    }
+  
+    .message-input {
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+
+/* Desktop View */
+@media (min-width: 1200px) {  
+    .header h1 {
+      font-size: 26px;
+    }
+
+  }
+  
