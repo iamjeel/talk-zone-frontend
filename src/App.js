@@ -7,13 +7,15 @@ import RoomHistory from './pages/RoomHistory'; // New RoomHistory page
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import './App.css';
+import Landing from './pages/Landing';
 
 const App = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<Home />} />
+      <Route path="/" element={<Landing />} />
       <Route path="/login" element={<Login />} />
       <Route path="/signup" element={<Signup />} />
+      <Route path="/home" element={<Home />} />
       <Route path="/room" element={<Room />} />
       <Route path="/profile" element={<Profile />} />   {/* Profile Page Route */}
       <Route path="/room-history" element={<RoomHistory />} /> {/* RoomHistory Page Route */}

@@ -1,9 +1,8 @@
-/* Root Variables for Reusability */
 :root {
-  --primary-color: #4c9dff;
-  --secondary-color: #006eff;
-  --button-background: #4c9dff;
-  --button-hover-background: #006eff;
+  --primary-color: #ffcc00; /* Bright yellow */
+  --secondary-color: #ff9900; /* Orange for hover and accents */
+  --button-background: #ffcc00; /* Match primary for buttons */
+  --button-hover-background: #ff9900; /* Match secondary for hover */
   --font-primary: 'Roboto', sans-serif;
   --font-size-header: 28px;
   --font-size-room-info: 14px;
@@ -16,20 +15,34 @@
   --message-max-width: 80%;
   --input-font-size: 14px;
   --scrollbar-width: 6px;
-  --scrollbar-thumb-color: #4c9dff;
-  --scrollbar-track-color: #f1f1f1;
+  --scrollbar-thumb-color: #ffcc00; /* Yellow scrollbar thumb */
+  --scrollbar-track-color: #2e2e2e; /* Dark track for contrast */
   --line-height: 1.6;
   --fade-in-duration: 0.3s;
+  --header-background: #2e2e2e; /* Dark gray for space vibe */
+  --header-text-color: #fff; /* White text for contrast */
+  --message-background: #2e2e2e; /* Dark gray bubble */
+  --message-border-color: #444; /* Subtle border */
+  --message-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5); /* Message shadow */
+  --input-background: #1a1a1a; /* Match container */
+  --input-border-color: #444; /* Input border */
+  --input-focus-border-color: var(--primary-color); /* Focus border */
+  --input-focus-box-shadow: 0 0 5px rgba(255, 204, 0, 0.5); /* Focus shadow */
+  --send-button-background: var(--button-background);
+  --send-button-border-color: var(--secondary-color);
+  --send-button-hover-background: var(--button-hover-background);
+  --send-button-active-background: #cc7700; /* Darker orange */
+  --send-button-disabled-background: #666; /* Gray for disabled */
 }
 
 /* Header Section */
 .header {
-  background: #fff;
-  color: #000;
+  background: var(--header-background);
+  color: var(--header-text-color);
   padding: 20px;
   text-align: center;
   flex-shrink: 0;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--secondary-color);
   width: 100%;
   font-family: var(--font-primary);
 }
@@ -39,20 +52,20 @@
   font-weight: 700;
   margin-bottom: 10px;
   color: var(--primary-color);
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
   transition: transform var(--fade-in-duration) ease, color var(--fade-in-duration) ease;
 }
 
 .header h1:hover {
   transform: scale(1.1);
   color: var(--secondary-color);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
 }
 
 .room-info {
   font-size: var(--font-size-room-info);
   font-weight: 300;
-  color: #777;
+  color: #ccc;
   font-style: italic;
   margin-top: 5px;
   transition: color var(--fade-in-duration) ease;
@@ -68,7 +81,7 @@
   height: calc(100vh - 60px);
   display: flex;
   flex-direction: column;
-  background: #fff;
+  background: #1a1a1a;
   overflow: hidden;
 }
 
@@ -76,9 +89,9 @@
 .chat-box {
   flex-grow: 1;
   padding: var(--message-padding);
-  background: #fff;
+  background: #1a1a1a;
   overflow-y: auto;
-  border-top: 1px solid #000;
+  border-top: 1px solid var(--secondary-color);
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -87,19 +100,19 @@
   animation: fadeIn var(--fade-in-duration) ease-in-out;
 }
 
-/* Ensure Messages Don't Overflow */
+/* Messages */
 .message {
   padding: var(--message-padding);
-  background: #f1f1f1;
+  background: var(--message-background);
   margin-bottom: 10px;
   border-radius: var(--message-border-radius);
-  color: #000;
+  color: #fff;
   font-size: var(--font-size-message);
   max-width: var(--message-max-width);
   width: fit-content;
   word-wrap: break-word;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid var(--message-border-color);
+  box-shadow: var(--message-box-shadow);
   animation: messageFadeIn var(--fade-in-duration) ease-in-out;
 }
 
@@ -121,8 +134,8 @@
 .message-input-container {
   display: flex;
   padding: 10px;
-  background: #fff;
-  border-top: 1px solid #000;
+  background: var(--header-background);
+  border-top: 1px solid var(--secondary-color);
   flex-shrink: 0;
   width: 100%;
   box-sizing: border-box;
@@ -132,24 +145,24 @@
   flex-grow: 1;
   padding: var(--message-padding);
   border-radius: var(--message-border-radius);
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border-color);
   font-size: var(--input-font-size);
   margin-right: 10px;
   outline: none;
-  background: #fff;
-  color: #000;
+  background: var(--input-background);
+  color: #fff;
   transition: box-shadow var(--fade-in-duration) ease;
 }
 
 .message-input:focus {
-  border-color: var(--primary-color);
-  box-shadow: 0 0 5px rgba(76, 157, 255, 0.5);
+  border-color: var(--input-focus-border-color);
+  box-shadow: var(--input-focus-box-shadow);
 }
 
 .send-button {
-  background: var(--button-background);
-  color: #fff;
-  border: 1px solid var(--button-background);
+  background: var(--send-button-background);
+  color: #000;
+  border: 1px solid var(--send-button-border-color);
   padding: var(--button-padding);
   border-radius: var(--message-border-radius);
   font-size: var(--font-size-button);
@@ -161,15 +174,17 @@
 }
 
 .send-button:hover {
-  background: var(--button-hover-background);
+  background: var(--send-button-hover-background);
+  color: #fff;
 }
 
 .send-button:active {
   transform: scale(0.98);
+  background: var(--send-button-active-background);
 }
 
 .send-button:disabled {
-  background: #e0e0e0;
+  background: var(--send-button-disabled-background);
   cursor: not-allowed;
 }
 
@@ -178,31 +193,7 @@
   outline-offset: 2px;
 }
 
-/* Fade-in Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-/* Fade-in Animation for Messages */
-@keyframes messageFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Media Queries for Responsiveness */
-
-/* Mobile View */
 @media (max-width: 600px) {
   .header h1 {
     font-size: 20px;
@@ -224,7 +215,6 @@
   }
 }
 
-/* Tablet View */
 @media (max-width: 900px) {
   .header h1 {
     font-size: 22px;
@@ -246,7 +236,6 @@
   }
 }
 
-/* Desktop View */
 @media (min-width: 1200px) {
   .header h1 {
     font-size: 26px;

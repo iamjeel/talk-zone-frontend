@@ -1,145 +1,174 @@
 /* Root Variables for Reusability */
 :root {
-    --primary-color: #4facfe;
-    --secondary-color: #00f2fe;
-    --button-hover-color: #e0f7fa;
-    --button-active-color: #b2ebf2;
-    --font-primary: 'Arial', sans-serif;
-    --font-size-h1: 2.5rem;
-    --font-size-p: 1.2rem;
-    --font-size-button: 1rem;
-    --font-size-mobile-h1: 2rem;
-    --font-size-mobile-p: 1rem;
-    --font-size-tablet-h1: 2.2rem;
-    --font-size-tablet-p: 1.1rem;
-    --font-size-desktop-h1: 3rem;
-    --font-size-desktop-p: 1.3rem;
-    --button-padding: 12px 24px;
-    --button-mobile-padding: 12px 0;
-    --button-desktop-padding: 15px 30px;
-    --line-height: 1.6;
-    --max-width: 1200px;
-    --max-paragraph-width: 800px;
-  }
-  
-  /* Home Page Styling */
+  --primary-color: #ffffff;
+  --secondary-color: #1f78d1;
+  --accent-color: #ffcc00;
+  --background-gradient: linear-gradient(to bottom, #000428, #004e92);
+  --star-color: #ffffff;
+  --font-primary: 'Arial', sans-serif;
+  --font-size-h1: 2.5rem;
+  --font-size-p: 1.2rem;
+  --font-size-button: 1rem;
+  --font-size-mobile-h1: 2rem;
+  --font-size-mobile-p: 1rem;
+  --font-size-tablet-h1: 2.2rem;
+  --font-size-tablet-p: 1.1rem;
+  --font-size-desktop-h1: 3rem;
+  --font-size-desktop-p: 1.3rem;
+  --button-padding: 12px 24px;
+  --button-mobile-padding: 12px 0;
+  --button-desktop-padding: 15px 30px;
+  --line-height: 1.6;
+  --max-width: 1200px;
+  --max-paragraph-width: 800px;
+}
+
+/* Home Page Styling */
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* Ensure full screen height */
+  text-align: center;
+  background: var(--background-gradient);
+  color: var(--primary-color);
+  padding: 0; /* Remove default padding */
+  margin: 0; /* Remove default margin */
+  font-family: var(--font-primary);
+  position: relative;
+  overflow: hidden;
+}
+
+.Home::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1), rgba(0, 0, 0, 0.8));
+  z-index: -2;
+}
+
+.Home::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  background-image: url('https://source.unsplash.com/1600x900/?stars,space');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.1;
+  z-index: -1;
+}
+
+.Home h1 {
+  font-size: var(--font-size-h1);
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.Home p {
+  font-size: var(--font-size-p);
+  margin-bottom: 2rem;
+  line-height: var(--line-height);
+  max-width: var(--max-paragraph-width);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Home button {
+  padding: var(--button-padding);
+  font-size: var(--font-size-button);
+  color: #000; /* Dark text for contrast */
+  background-color: #ffcc00; /* Bright yellow background */
+  border: 2px solid #ff9900; /* Orange border for better contrast */
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin: 10px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.Home button:hover {
+  background-color: #ff9900; /* Slightly darker yellow for hover */
+  color: #fff; /* White text for hover state */
+  border-color: #cc7700; /* Darker orange border on hover */
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.Home button:active {
+  background-color: #cc7700; /* Even darker yellow for active state */
+  color: #fff; /* Maintain white text */
+  border-color: #993f00; /* Dark brown-orange border for active */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile View (max-width 600px) */
+@media (max-width: 600px) {
   .Home {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
-    padding: 20px;
-    font-family: var(--font-primary);
-    max-width: var(--max-width);
-    margin: 0 auto;
+    height: auto;
+    padding: 30px 15px;
   }
-  
+
   .Home h1 {
-    font-size: var(--font-size-h1);
-    margin-bottom: 1rem;
-    font-weight: bold;
+    font-size: var(--font-size-mobile-h1);
   }
-  
+
   .Home p {
-    font-size: var(--font-size-p);
-    margin-bottom: 2rem;
-    line-height: var(--line-height);
-    max-width: var(--max-paragraph-width);
-    margin-left: auto;
-    margin-right: auto;
+    font-size: var(--font-size-mobile-p);
   }
-  
+
   .Home button {
-    padding: var(--button-padding);
-    font-size: var(--font-size-button);
-    color: var(--primary-color);
-    background-color: #fff;
-    border: 2px solid var(--primary-color);
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin: 10px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    padding: var(--button-mobile-padding);
+    font-size: 1.1rem;
   }
-  
-  .Home button:hover {
-    background-color: var(--button-hover-color);
-    transform: scale(1.05);
-    border-color: var(--secondary-color);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Tablet View (max-width 900px) */
+@media (max-width: 900px) {
+  .Home {
+    height: auto;
+    padding: 30px 20px;
   }
-  
-  .Home button:active {
-    background-color: var(--button-active-color);
-    border-color: var(--secondary-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+  .Home h1 {
+    font-size: var(--font-size-tablet-h1);
   }
-  
-  /* Mobile View (max-width 600px) */
-  @media (max-width: 600px) {
-    .Home {
-      height: auto;
-      padding: 30px 15px;
-    }
-  
-    .Home h1 {
-      font-size: var(--font-size-mobile-h1);
-    }
-  
-    .Home p {
-      font-size: var(--font-size-mobile-p);
-    }
-  
-    .Home button {
-      width: 100%;
-      padding: var(--button-mobile-padding);
-      font-size: 1.1rem;
-    }
+
+  .Home p {
+    font-size: var(--font-size-tablet-p);
   }
-  
-  /* Tablet View (max-width 900px) */
-  @media (max-width: 900px) {
-    .Home {
-      height: auto;
-      padding: 30px 20px;
-    }
-  
-    .Home h1 {
-      font-size: var(--font-size-tablet-h1);
-    }
-  
-    .Home p {
-      font-size: var(--font-size-tablet-p);
-    }
-  
-    .Home button {
-      width: 100%;
-      font-size: 1.1rem;
-    }
+
+  .Home button {
+    width: 100%;
+    font-size: 1.1rem;
   }
-  
-  /* Desktop View (min-width 1200px) */
-  @media (min-width: 1200px) {
-    .Home {
-      padding: 40px 30px;
-    }
-  
-    .Home h1 {
-      font-size: var(--font-size-desktop-h1);
-    }
-  
-    .Home p {
-      font-size: var(--font-size-desktop-p);
-    }
-  
-    .Home button {
-      width: auto;
-      font-size: 1.2rem;
-      padding: var(--button-desktop-padding);
-    }
+}
+
+/* Desktop View (min-width 1200px) */
+@media (min-width: 1200px) {
+  .Home {
+    padding: 40px 30px;
   }
-  
+
+  .Home h1 {
+    font-size: var(--font-size-desktop-h1);
+  }
+
+  .Home p {
+    font-size: var(--font-size-desktop-p);
+  }
+
+  .Home button {
+    width: auto;
+    font-size: 1.2rem;
+    padding: var(--button-desktop-padding);
+  }
+}

@@ -14,7 +14,7 @@ const Login = () => {
     try {
       const response = await axios.post('http://localhost:3001/api/login', { email, password });
       localStorage.setItem('token', response.data.token);
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       setError(err.response?.data?.message || 'Login failed');
     }
@@ -22,25 +22,31 @@ const Login = () => {
 
   return (
     <div className="auth-container">
-      <h2>Login</h2>
-      {error && <p className="error">{error}</p>}
-      <form onSubmit={handleLogin}>
-        <input
-          type="email"
-          placeholder="Email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <button type="submit">Login</button>
-      </form>
+      <div className="auth-content">
+        <h2>Welcome Back to Unsaid</h2>
+        <p className="tagline">Join the conversation, share the thoughts that remain unsaid.</p>
+        {error && <p className="error">{error}</p>}
+        <form onSubmit={handleLogin}>
+          <input
+            type="email"
+            placeholder="Email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <button type="submit" className="primary-button">Login</button>
+        </form>
+        <p className="auth-footer">
+          Don't have an account? <a href="/signup" className="cta-link">Sign up here</a>
+        </p>
+      </div>
     </div>
   );
 };
