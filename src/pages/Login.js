@@ -11,12 +11,13 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
+    setError(''); // Clear previous errors
     try {
       const response = await axios.post('http://localhost:3001/api/login', { email, password });
       localStorage.setItem('token', response.data.token);
-      navigate('/home');
+      navigate('/home'); // Redirect to home page
     } catch (err) {
-      setError(err.response?.data?.message || 'Login failed');
+      setError(err.response?.data?.message || 'An error occurred. Please try again.');
     }
   };
 

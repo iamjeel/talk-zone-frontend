@@ -116,6 +116,26 @@
   animation: messageFadeIn var(--fade-in-duration) ease-in-out;
 }
 
+.sent {
+  align-self: flex-end;
+  background-color: #5a4fcf;
+  color: white;
+}
+
+.received {
+  align-self: flex-start;
+  background-color: #3c3c8c;
+  color: white;
+}
+
+.message-time {
+  display: block;
+  font-size: 10px;
+  color: #bbb;
+  margin-top: 5px;
+  text-align: right;
+}
+
 /* Scrollbar Styling */
 .chat-box::-webkit-scrollbar {
   width: var(--scrollbar-width);
