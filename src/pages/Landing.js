@@ -15,11 +15,14 @@ const Landing = () => {
             Where silence speaks louder. Chat anonymously, share unspoken thoughts, and make unexpected connections.
           </p>
           <div className="hero-buttons">
-            <button onClick={() => navigate('/login')} className="primary-button">
+            {/* <button onClick={() => navigate('/login')} className="primary-button">
               Login
             </button>
             <button onClick={() => navigate('/signup')} className="secondary-button">
               Sign Up
+            </button> */}
+            <button onClick={() => navigate('/home')} className="secondary-button">
+              join
             </button>
           </div>
         </div>
@@ -66,7 +69,7 @@ const Landing = () => {
       {/* Call-to-Action Section */}
       <section className="cta-section">
         <h2>Ready to Say What You’ve Never Said?</h2>
-        <button onClick={() => navigate('/signup')} className="primary-button">
+        <button onClick={() => navigate('/home')} className="primary-button">
           Get Started
         </button>
       </section>
