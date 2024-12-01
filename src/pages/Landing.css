@@ -42,14 +42,13 @@ html, body {
   padding: 0;
 }
 
-/* Full-width layout for sections */
+/* Landing Page Layout */
 .landing-page {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
 }
 
-/* Ensure sections are full-width */
 section {
   width: 100%;
   padding: 0 20px;
@@ -61,25 +60,32 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: url('https://source.unsplash.com/1600x900/?night,space');
-  background-size: cover;
-  background-position: center;
+  background: linear-gradient(120deg, #8e44ad, #3498db, #1abc9c);
+  background-size: 300% 300%;
+  animation: gradient-shift 8s ease infinite;
   color: var(--primary-color);
   text-align: center;
   padding: 50px 0;
-  min-height: 100vh;
 }
 
-.hero-content {
-  text-align: center;
-  padding: 0 20px;
+@keyframes gradient-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-content h1 {
-  font-size: var(--font-size-h1);
+  font-size: var(--font-size-desktop-h1);
   font-weight: bold;
-  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  color: #f1c40f;
   margin-bottom: 20px;
+  text-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
 }
 
 .hero-content .tagline {
@@ -99,32 +105,30 @@ section {
 .hero-buttons button {
   padding: var(--button-padding);
   font-size: var(--font-size-button);
-  color: #000;
-  background-color: var(--gold-accent);
+  color: #fff;
+  background: linear-gradient(120deg, #ff416c, #ff4b2b);
   border: none;
-  border-radius: 5px;
+  border-radius: 50px;
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hero-buttons button:hover {
-  background-color: var(--primary-color);
-  color: var(--gold-accent);
-  transform: translateY(-2px);
+  transform: scale(1.1);
+  box-shadow: 0px 10px 20px rgba(255, 75, 43, 0.6);
 }
 
 /* Features Section */
 .features-section {
-  background-color: #1f1f2f;
+  background: linear-gradient(135deg, #131a24, #1f1f2f);
   padding: 50px 20px;
   text-align: center;
   width: 100%;
-  min-height: 100vh;
 }
 
 .features-section h2 {
   font-size: var(--font-size-h1);
-  color: var(--gold-accent);
+  color: #f1c40f;
   margin-bottom: 30px;
 }
 
@@ -137,32 +141,34 @@ section {
 }
 
 .feature {
-  background-color: rgba(0, 0, 0, 0.6);
+  background: rgba(255, 255, 255, 0.1);
   padding: 30px;
-  border-radius: 8px;
-  transition: background 0.3s ease;
+  border-radius: 12px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease, background 0.3s ease;
 }
 
 .feature:hover {
-  background-color: rgba(255, 255, 255, 0.1);
+  transform: scale(1.05);
+  background: rgba(0, 0, 0, 0.8);
 }
 
 .feature h3 {
   font-size: var(--font-size-h1);
-  color: var(--gold-accent);
-  margin-bottom: 15px;
+  color: #3498db;
 }
 
 .feature p {
   font-size: var(--font-size-p);
-  color: var(--secondary-color);
+  color: var(--primary-color);
 }
 
 /* Testimonials Section */
 .testimonials-section {
-  background-color: #131a24;
+  background: linear-gradient(135deg, #1abc9c, #3498db);
   padding: 50px 20px;
   color: var(--primary-color);
+  text-align: center;
   width: 100%;
 }
 
@@ -170,13 +176,24 @@ section {
   display: flex;
   justify-content: space-between;
   gap: 40px;
+  flex-wrap: wrap;
 }
 
 .testimonial {
-  background-color: rgba(255, 255, 255, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
   padding: 20px;
-  border-radius: 8px;
+  border-radius: 10px;
   max-width: 300px;
+}
+
+.testimonial img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-bottom: 10px;
 }
 
 .testimonial p {
@@ -185,64 +202,71 @@ section {
 }
 
 .testimonial h4 {
-  font-weight: bold;
-  color: var(--gold-accent);
+  margin-top: 10px;
+  color: #f1c40f;
 }
 
 /* Call-to-Action Section */
 .cta-section {
-  background-color: #1f1f2f;
+  background: linear-gradient(135deg, #ff4b2b, #ff416c);
   text-align: center;
   padding: 50px 20px;
-  width: 100%;
+  animation: pulse 5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
 }
 
 .cta-section h2 {
-  font-size: var(--font-size-h1);
-  color: var(--gold-accent);
+  font-size: var(--font-size-desktop-h1);
+  color: #fff;
   margin-bottom: 30px;
 }
 
 .cta-section .primary-button {
+  background: #f1c40f;
+  color: #131a24;
+  border-radius: 50px;
   padding: var(--button-padding);
   font-size: var(--font-size-button);
-  color: #000;
-  background-color: var(--gold-accent);
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
   transition: all 0.3s ease;
 }
 
 .cta-section .primary-button:hover {
-  background-color: var(--primary-color);
-  color: var(--gold-accent);
-  transform: translateY(-2px);
+  background: #ffffff;
+  color: #f1c40f;
+  box-shadow: 0px 10px 20px rgba(241, 196, 15, 0.5);
 }
 
 /* Footer Section */
 .footer-section {
-  background-color: #131a24;
+  background: #131a24;
   padding: 20px 10px;
   color: var(--secondary-color);
   text-align: center;
   width: 100%;
 }
 
-.footer-section .footer-links {
+.footer-links {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
 
-.footer-section .footer-links a {
+.footer-links a {
   color: var(--secondary-color);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
-.footer-section .footer-links a:hover {
-  color: var(--gold-accent);
+.footer-links a:hover {
+  color: #f1c40f;
 }
 
 /* Media Queries for Responsiveness */
@@ -255,31 +279,10 @@ section {
     flex-direction: column;
     align-items: center;
   }
-
-  .cta-section h2 {
-    font-size: var(--font-size-mobile-h1);
-  }
-
-  .cta-section .primary-button {
-    padding: var(--button-mobile-padding);
-    font-size: var(--font-size-button);
-  }
-
-  .hero-content h1 {
-    font-size: var(--font-size-mobile-h1);
-  }
-
-  .hero-content .tagline {
-    font-size: var(--font-size-mobile-p);
-  }
 }
 
 @media (max-width: 480px) {
   .features-container {
     grid-template-columns: 1fr;
-  }
-
-  .hero-content h1 {
-    font-size: var(--font-size-mobile-h1);
   }
 }

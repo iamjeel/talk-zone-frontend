@@ -12,17 +12,14 @@ const Landing = () => {
         <div className="hero-content">
           <h1>Welcome to Unsaid</h1>
           <p className="tagline">
-            Where silence speaks louder. Chat anonymously, share unspoken thoughts, and make unexpected connections.
+            Where silence speaks louder. Connect anonymously with nearby people, share unspoken thoughts, and make spontaneous connections.
           </p>
           <div className="hero-buttons">
-            {/* <button onClick={() => navigate('/login')} className="primary-button">
-              Login
+            <button onClick={() => navigate('/home')} className="primary-button">
+              Start Now
             </button>
-            <button onClick={() => navigate('/signup')} className="secondary-button">
-              Sign Up
-            </button> */}
-            <button onClick={() => navigate('/home')} className="secondary-button">
-              join
+            <button onClick={() => navigate('/about')} className="secondary-button">
+              Learn More
             </button>
           </div>
         </div>
@@ -30,19 +27,23 @@ const Landing = () => {
 
       {/* Features Section */}
       <section className="features-section">
-        <h2>Why Choose Unsaid?</h2>
+        <h2>Why Unsaid Stands Out</h2>
         <div className="features-container">
           <div className="feature">
-            <h3>Unspoken Connections</h3>
-            <p>Conversations that happen without names. Only words that matter.</p>
+            <h3>Anonymous Conversations</h3>
+            <p>Engage in conversations that are free of personal identities—just real thoughts and words.</p>
           </div>
           <div className="feature">
-            <h3>Nearby Rooms</h3>
-            <p>Let fate guide you to people nearby. Rooms based on location, conversations on impulse.</p>
+            <h3>5 km Radius Rooms</h3>
+            <p>Find people within a 5 km radius and join local conversations based on your location. Let serendipity guide you.</p>
+          </div>
+          <div className="feature">
+            <h3>Instant Connections</h3>
+            <p>No long introductions or profiles. Just jump into the conversation and let the words flow.</p>
           </div>
           <div className="feature">
             <h3>Privacy First</h3>
-            <p>In a world of oversharing, we value your silence. Your privacy is sacred.</p>
+            <p>Your personal information stays private. No profiles, no history—just the present moment.</p>
           </div>
         </div>
       </section>
@@ -52,23 +53,24 @@ const Landing = () => {
         <h2>What Our Users Say</h2>
         <div className="testimonials-container">
           <div className="testimonial">
-            <p>"Unsaid gave me a place to talk without the weight of expectations. It's liberating."</p>
-            <h4>- Noah B.</h4>
+            <p>"Unsaid is the perfect way to connect with strangers without any pressure or expectation. The 5 km radius feature makes it feel so local and real!"</p>
+            <h4>- Alex M.</h4>
           </div>
           <div className="testimonial">
-            <p>"The anonymity lets you be unapologetically real. No masks, no judgments."</p>
-            <h4>- Emily R.</h4>
+            <p>"I love the idea of connecting with people nearby. It’s refreshing to be able to speak my mind without worrying about my identity."</p>
+            <h4>- Jamie S.</h4>
           </div>
           <div className="testimonial">
-            <p>"Conversations with strangers feel like a breath of fresh air—just pure connection."</p>
-            <h4>- Mark T.</h4>
+            <p>"This app lets me be unapologetically honest. I feel free to share my thoughts without any judgment."</p>
+            <h4>- Taylor L.</h4>
           </div>
         </div>
       </section>
 
       {/* Call-to-Action Section */}
       <section className="cta-section">
-        <h2>Ready to Say What You’ve Never Said?</h2>
+        <h2>Ready to Break Your Silence?</h2>
+        <p>Join Unsaid today and experience the freedom of anonymous, location-based conversations.</p>
         <button onClick={() => navigate('/home')} className="primary-button">
           Get Started
         </button>
