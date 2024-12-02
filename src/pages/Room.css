@@ -36,33 +36,30 @@
 }
 
 /* Header Section */
+/* Header Section */
 .header {
   background: var(--header-background);
   color: var(--header-text-color);
   padding: 20px;
-  text-align: center;
-  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between; /* Space between header elements */
+  align-items: center; /* Align items vertically */
   border-bottom: 1px solid var(--secondary-color);
   width: 100%;
   font-family: var(--font-primary);
+  box-sizing: border-box;
+  flex-wrap: wrap; /* Ensure content wraps in smaller screens */
 }
 
 .header h1 {
   font-size: var(--font-size-header);
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: var(--primary-color);
-  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-  transition: transform var(--fade-in-duration) ease, color var(--fade-in-duration) ease;
+  margin: 0;
+  flex-grow: 1;
+  text-align: center; /* Center the title on smaller screens */
 }
 
-.header h1:hover {
-  transform: scale(1.1);
-  color: var(--secondary-color);
-  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
-}
-
-.room-info {
+/* Room Name and Info */
+ .room-info {
   font-size: var(--font-size-room-info);
   font-weight: 300;
   color: #ccc;
@@ -71,8 +68,37 @@
   transition: color var(--fade-in-duration) ease;
 }
 
-.room-info:hover {
+ .room-info:hover {
   color: var(--primary-color);
+}
+
+/* Users Online Section */
+.users-online {
+  font-size: 12px;
+  color: #ccc;
+  margin-top: 5px; /* Position below the room name */
+  font-style: italic;
+  transition: color var(--fade-in-duration) ease;
+}
+
+.users-online:hover {
+  color: var(--primary-color);
+}
+
+/* Leave Room Button */
+.leave-room-button {
+  background-color: #c9ada7;
+  border: none;
+  color: #22223b;
+  padding: 8px 12px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.leave-room-button:hover {
+  background-color: #22223b;
+  color: #f2e9e4;
 }
 
 /* Chat Container */
@@ -128,7 +154,7 @@
   color: white;
 }
 
-.message-time {
+.message-timestamp {
   display: block;
   font-size: 10px;
   color: #bbb;
@@ -216,8 +242,27 @@
 
 /* Media Queries for Responsiveness */
 @media (max-width: 600px) {
+  .header {
+    flex-direction: column; /* Stack the items vertically on small screens */
+    align-items: center; /* Center elements */
+    padding: 15px; /* Reduce padding for mobile */
+  }
+
   .header h1 {
-    font-size: 20px;
+    font-size: 20px; /* Smaller font size for the title */
+    margin-bottom: 10px; /* Add space below the title */
+  }
+
+  .users-online, .room-info {
+    text-align: center; /* Center text on smaller screens */
+    font-size: 12px; /* Smaller font size */
+  }
+
+  .leave-room-button {
+    width: 100%; /* Make the leave button full width on mobile */
+    padding: 10px; /* Adjust padding for mobile */
+    font-size: 14px;
+    text-align: center; /* Center text */
   }
 
   .message-input {
@@ -237,8 +282,22 @@
 }
 
 @media (max-width: 900px) {
+
+  .header {
+    padding: 20px;
+  }
+
   .header h1 {
     font-size: 22px;
+  }
+
+  .users-online, .room-info {
+    font-size: 14px;
+  }
+
+  .leave-room-button {
+    width: auto; /* Restore button width */
+    font-size: 16px;
   }
 
   .message-input {
